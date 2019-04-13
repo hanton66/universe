@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="de">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Universe Simulation</title>
+    <meta name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=1.0; user-scalable=0;"/>
+    <meta name="apple-mobile-web-app-capable" content="yes"/>
+    <meta name="apple-mobile-web-app-status-bar-style" content="black"/>
+    <link rel="icon" type="image/png" href="universe.png"/>
+    <link rel="apple-touch-icon" href="universe.png"/>
+    <link rel="apple-touch-startup-image" href="universe.png" />
+    <style type="text/css" media="screen">@import "iphonenav.css";</style>
+    <script type="application/x-javascript" src="iphonenav.js"></script>
+    <script src="somemathfunc.js"> </script>
+    <script src="Chart.js"> </script>
+</head>
+  <body>
+    <h1 id="pageTitle">Universe SImulation</h1>
+    <a id="homeButton" class="button" href="#start">Home</a>
+    <a class="button" href="#statusReport">Status</a>
+	
+	<ul id="start" title="Universe Simulator" selected="true">
+        <li><a href="#setParams">Set Universe Parameters</a></li>	
+        <HR>
+        <li><a href="#hubbledev">Show Hubble Expansion</a></li>	
+        <li><a href="#distdev">Show Universe Size</a></li>
+        <li><a href="#scaledev">Show Scale Factor</a></li> 
+        <HR>     
+        <li><a href="#HubbleTxt">Hubbles Law</a></li>              	       
+    </ul>
+
+    <form id="setParams" class="dialog" action="dotheUni()">
+            <fieldset>
+                <h1>Universe Parameters</h1>
+                <a class="button toolButton goButton" href="#hubbledev" onclick="dotheUni(Hubble.value,Omega.value,tuni.value);">Calculate</a>
+                <input type="text" value="1  -  Hubble Parameter - 100)" readonly />           
+                <input id="Hubble" type="range" min="1" max="100" value="70" />
+                <HR>
+                <input type="text" value="1 - Relative Baryonic Density - 100 %" readonly />           
+                <input id="Omega" type="range" min="1" max="100" value="30" />
+                <HR>
+                <input type="text" value="1 - Time Range in billion years - 100" readonly />           
+                <input id="tuni" type="range" min="1" max="100" value="20" />
+                <HR>
+
+                <textarea readonly>Description</textarea>		           
+            </fieldset>
+        </form>	
+
+    <div id="hubbledev" class="panel" title="Hubble Expansion">
+        <canvas id="time-expansion" width="340" height="340"> </canvas>
+        <li><a href="#distdev">Show Universe Size</a></li>
+        <li><a href="#scaledev">Show Scale Factor</a></li>         
+    </div>
+
+    <div id="distdev" class="panel" title="Visible Size">
+        <canvas id="dist-expansion" width="340" height="340"> </canvas>
+        <li><a href="#hubbledev">Show Hubble Expansion</a></li>	
+        <li><a href="#scaledev">Show Scale Factor</a></li> 
+    </div>
+
+    <div id="scaledev" class="panel" title="Scaling Factor">
+        <canvas id="asim-expansion" width="340" height="340"> </canvas>
+        <li><a href="#hubbledev">Show Hubble Expansion</a></li>	
+        <li><a href="#distdev">Show Universe Size</a></li>       
+    </div>
+
+    <ul id="HubbleTxt" title="Hubbles Law">
+        <li><iframe width="95%" height="480" src="https://en.m.wikipedia.org/wiki/Hubble%27s_law"></iframe></li>
+    </ul>
+
+
+
+
+    <script src="calcuniverse.js"> </script>
+
+
+</body>
+</html>
