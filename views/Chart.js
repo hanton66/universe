@@ -72,7 +72,7 @@
 			scaleLabel: "<%=value%>",
 
 			// Boolean - Whether the scale should stick to integers, and not show any floats even if drawing space is there
-			scaleIntegersOnly: true,
+			scaleIntegersOnly: false,
 
 			// Boolean - Whether the scale should start at zero, or an order of magnitude down from the lowest value
 			scaleBeginAtZero: false,
