@@ -9,7 +9,7 @@
     <link rel="apple-touch-icon" href="universe.png"/>
     <link rel="apple-touch-startup-image" href="universe.png" />
     <style type="text/css" media="screen">@import "iphonenav.css";</style>
-    <script type="application/x-javascript" src="iphonenav.js"></script>
+    <script src="iphonenav.js"></script>
     <script src="somemathfunc.js"> </script>
     <script src="Chart.js"> </script>
     <script src="calcuniverse.js"> </script>   
@@ -45,9 +45,9 @@
 
                 <p>
                 You can create your own Universe by adjusting three Parameters.<br>
-                Try to calibrate the Hubble Constant. Currently it is abour 70.<br>
-                Are you living in a Universe with a high baryonic (mass) density?<br>
-                Then trim the Omega-Paramter to an high value.<br>
+                Try to calibrate the Hubble Constant. <br>
+                Are you living in a Universe with a high baryonic (mass) density?
+                Then trim the Omega-Paramter to an high value.
                 Or do you live in a Universe with a lot of unknown dark energy?<br>
                 You can also set the time range of your simulation from one to 100 billion years.<br>
                 Good luck!
@@ -57,7 +57,7 @@
         </form>	
 
     <div id="hubbledev" class="panel" title="Hubble Expansion">
-        <canvas id="time-expansion" width="340" height="340"> </canvas>
+        <canvas id="time-expansion" width="320" height="300"> </canvas>
         <p>
         The graph shows the development of the Hubble constant during time.
         Normally the Hubble Constant goes to a constant value over a long period.
@@ -68,10 +68,10 @@
     </div>
 
     <div id="distdev" class="panel" title="Visible Size">
-        <canvas id="dist-expansion" width="340" height="340"> </canvas>
+        <canvas id="dist-expansion" width="320" height="300"> </canvas>
         <p>
-            The graph shows Hubble Distance and therefore the development of 
-            the visible Size of the Universe in billion lightyears during time.
+            The graph shows the Hubble Distance and therefore the development of 
+            the visible Size of the Universe in billion lightyears over time.
             It is the eevent horizon of the universe. 
             The velocity of the Objects rises with larger distance.
             The space time at the edge of the universe take off with the 
@@ -82,7 +82,7 @@
     </div>
 
     <div id="scaledev" class="panel" title="Scaling Factor">
-        <canvas id="asim-expansion" width="340" height="340"> </canvas>
+        <canvas id="asim-expansion" width="320" height="300"> </canvas>
         <p>
             The scaling factor describes the expansion of the universe over time.
             Scaling factor equals one is the current state.

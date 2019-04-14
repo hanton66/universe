@@ -42,13 +42,13 @@ alert("Hubble is set to " + Hubble + "\n" +
       "Simulation time is set to " + tuni + " billion years" + "\n" 
 );
 
-var it_all = Array(tmesh); it_all[0] = 1;
-var t_all = Array(tmesh); t_all[0] = 0;
-var asim = Array(tmesh); asim[0] = 0;
-var H_t = Array(tmesh); H_t[0] = 0;
-var Hubble_t = Array(tmesh); Hubble_t[0] = 0;
-var Hdist = Array(tmesh); Hdist[0] = 0;
-var zshift = Array(tmesh); zshift[0] = 0;
+var it_all = new Array(tmesh); it_all[0] = 1;
+var t_all = new Array(tmesh); t_all[0] = 0;
+var asim = new Array(tmesh); asim[0] = 0;
+var H_t = new Array(tmesh); H_t[0] = 0;
+var Hubble_t = new Array(tmesh); Hubble_t[0] = 0;
+var Hdist = new Array(tmesh); Hdist[0] = 0;
+var zshift = new Array(tmesh); zshift[0] = 0;
 var t_de = 2/(3*H_0*sqrt(O_de));
 var dt = deltat;
 var lblstr = '["0"';
@@ -69,24 +69,23 @@ for (var irun = 1; irun <= tmesh; ++irun)
 lblstr = lblstr + "]";
 Hubble_t[0] = Hubble_t[1] + Hubble_t[2];
 
-//if (myLine1 =! null) {
- //   var clrcvs =  myLine1.clear();
-//}
+
+var clrctx = document.getElementById("asim-expansion").getContext('2d');
+clrctx.clearRect(0, 0, clrctx.width, clrctx.height);
+
+
 var lineChartData = {
     labels : eval(lblstr),
     datasets : [									
         {
             fillColor : "rgba(255, 255, 255, 0)",
             data : eval(Hubble_t)
-        }
-    ]
-    
+        }             
+    ]   
 }
 var myLine1 = new Chart(document.getElementById("time-expansion").getContext("2d")).Line(lineChartData);
 
-//if (myLine2 != null) {
- //   var clrcvs = myLine2.clear();
-//}
+
 var lineChartData = {
     labels : eval(lblstr),
     datasets : [									
@@ -99,9 +98,7 @@ var lineChartData = {
 }
 var myLine2 = new Chart(document.getElementById("dist-expansion").getContext("2d")).Line(lineChartData);
 
-//if (myLine3 =! null) {
-//    var clrcvs = myLine3.clear();
-//}
+
 var lineChartData = {
     labels : eval(lblstr),
     datasets : [									
