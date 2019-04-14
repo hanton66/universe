@@ -69,9 +69,9 @@ for (var irun = 1; irun <= tmesh; ++irun)
 lblstr = lblstr + "]";
 Hubble_t[0] = Hubble_t[1] + Hubble_t[2];
 
-
-
-
+//if (myLine1 =! null) {
+ //   var clrcvs =  myLine1.clear();
+//}
 var lineChartData = {
     labels : eval(lblstr),
     datasets : [									
@@ -82,8 +82,11 @@ var lineChartData = {
     ]
     
 }
-var myLine = new Chart(document.getElementById("time-expansion").getContext("2d")).Line(lineChartData);
+var myLine1 = new Chart(document.getElementById("time-expansion").getContext("2d")).Line(lineChartData);
 
+//if (myLine2 != null) {
+ //   var clrcvs = myLine2.clear();
+//}
 var lineChartData = {
     labels : eval(lblstr),
     datasets : [									
@@ -94,9 +97,11 @@ var lineChartData = {
     ]
     
 }
-var myLine = new Chart(document.getElementById("dist-expansion").getContext("2d")).Line(lineChartData);
+var myLine2 = new Chart(document.getElementById("dist-expansion").getContext("2d")).Line(lineChartData);
 
-
+//if (myLine3 =! null) {
+//    var clrcvs = myLine3.clear();
+//}
 var lineChartData = {
     labels : eval(lblstr),
     datasets : [									
@@ -107,7 +112,7 @@ var lineChartData = {
     ]
     
 }
-var myLine = new Chart(document.getElementById("asim-expansion").getContext("2d")).Line(lineChartData);
+var myLine3 = new Chart(document.getElementById("asim-expansion").getContext("2d")).Line(lineChartData);
 
 
 
