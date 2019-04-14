@@ -70,10 +70,6 @@ lblstr = lblstr + "]";
 Hubble_t[0] = Hubble_t[1] + Hubble_t[2];
 
 
-var clrctx = document.getElementById("asim-expansion").getContext('2d');
-clrctx.clearRect(0, 0, clrctx.width, clrctx.height);
-
-
 var lineChartData = {
     labels : eval(lblstr),
     datasets : [									
