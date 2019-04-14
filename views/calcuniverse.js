@@ -4,6 +4,7 @@ function dotheUni(Hubble, Omega, tuni) {
 //
 // Some free parameters
 var tmesh = 10; // is the Time Mesh-Size of the simulation
+var dtmesh = 9; // is the fine mesh for interpolations between two tics
 //var tuni = 20; // Billion years simulation time space
 // var Hubble = 68; // Current Hubble constant in km/s/MPs
 var O_m = Omega/100;  // Part of real matter in the universe 
@@ -28,10 +29,6 @@ var hbar = 6.626e-34/(2*pi); // Plancks constant in J/s
 var hbardens = c^5/hbar/G^2; // Critical PLanck density
 var H_0 = Hubble*1000/MPc; // HUbble constant in SI units
 //
-// Some experimental data - Measured redshift vs. Hubble Constant
-var zobs = Array(  7,  9, 12, 17, 18, 20, 20, 27, 28, 35, 35, 38, 40, 40, 42, 45, 47, 48, 59, 68, 78, 99, 88, 90,103,130,136,143,153,175,197);
-var Hobs = Array( 69, 69, 69, 83, 75, 75, 73, 77, 89, 82, 83, 83, 95, 77, 87, 93, 81, 97,104, 92,105,125, 90,117,154,168,160,177,140,202,187);
-//
 // Some html Formating variables
 var line = "<HR>"
 var text = line
@@ -53,7 +50,7 @@ var t_de = 2/(3*H_0*sqrt(O_de));
 var dt = deltat;
 var lblstr = '["0"';
 
-for (var irun = 1; irun <= tmesh; ++irun)
+for (var irun = 1; irun < tmesh; ++irun)
 { 
     it_all[irun] = it_all[irun-1] + deltat; 
     lblstr = lblstr + ',"' + form(it_all[irun],2)  + '"';
@@ -68,7 +65,6 @@ for (var irun = 1; irun <= tmesh; ++irun)
 
 lblstr = lblstr + "]";
 Hubble_t[0] = Hubble_t[1] + Hubble_t[2];
-
 
 var lineChartData = {
     labels : eval(lblstr),
@@ -107,10 +103,77 @@ var lineChartData = {
 }
 var myLine3 = new Chart(document.getElementById("asim-expansion").getContext("2d")).Line(lineChartData);
 
+//
+// Some experimental data - Measured redshift vs. Hubble Constant
+var zobs = Array(  7,  9, 12, 17, 18, 20, 27, 28, 35, 38, 40, 42, 45, 47, 48, 59, 68, 78, 88, 90,  99, 103,130,136,143,153,175,197);
+var Hobs = Array( 69, 69, 69, 83, 75, 74, 77, 89, 82, 83, 84, 87, 93, 81, 97,104, 92,105, 90,117, 125, 154,168,160,177,140,202,187);
+var aobs = new Array(zobs.length)
+
+for (irun = 0; irun < zobs.length; ++irun)
+{
+    zobs[irun] = zobs[irun]/100.0
+    aobs[irun] = 1.0/(1.0+zobs[irun]);
+}
+
+var imesh = 0;
+var afsim = new Array((tmesh-1)*dtmesh)
+var Htfine = new Array((tmesh-1)*dtmesh)
+var daf = 0; 
+var dhf =0;
+for (irun = 0; irun < tmesh-1; irun++)
+{
+    afsim[imesh] = asim[irun];
+    Htfine[imesh] = Hubble_t[irun] 
+    daf = (asim[irun+1] - asim[irun])/dtmesh;
+    dhf = (Hubble_t[irun+1] - Hubble_t[irun])/dtmesh;
+    for (ispl = 1; ispl < dtmesh; ispl++)
+    {  
+     imesh++
+     afsim[imesh] = asim[irun]  + daf*ispl;   
+     Htfine[imesh] = Hubble_t[irun] + dhf*ispl;
+    }   
+    imesh++
+}
+//
+// search the values
+var itotal = (tmesh-1)*dtmesh;
+var Hthe = new Array(zobs.length);
+var ick = 0;
+for (ichk = 0; ichk < zobs.length; ichk++) {
+
+for (imesh = 0; imesh < itotal; imesh++) {
+    if (afsim[imesh] < aobs[ichk]) {    
+        if (afsim[imesh+1] < aobs[ichk]) {
+            Hthe[ichk] = Htfine[imesh];
+        }
+    }
+}
+}
 
 
 
-console.log(it_all);
+var lineChartData = {
+    labels : eval(zobs),
+    datasets : [								
+        {
+            fillColor : "rgba(255, 255, 255, 0)",
+            strokeColor : "rgba(000,000,000,1)",                      
+            data : eval(Hthe)
+        },
+        {
+            fillColor : "rgba(255, 255, 255, 0)",
+            strokeColor : "rgba(150,150,150,1)",             
+            pointColor : "rgba(151,255,205,1)",            
+            data : eval(Hobs)
+        }        
+    ]
+    
+}
+var myLine4 = new Chart(document.getElementById("redshift-compare").getContext("2d")).Line(lineChartData);
+
+
+
+console.log(Hthe);
 /** 
 text = text + it_all;
 text = text + line + irun;
