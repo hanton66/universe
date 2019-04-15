@@ -50,7 +50,7 @@ var t_de = 2/(3*H_0*sqrt(O_de));
 var dt = deltat;
 var lblstr = '["0"';
 
-for (var irun = 1; irun < tmesh; ++irun)
+for (var irun = 1; irun <= tmesh; ++irun)
 { 
     it_all[irun] = it_all[irun-1] + deltat; 
     lblstr = lblstr + ',"' + form(it_all[irun],2)  + '"';
@@ -116,11 +116,11 @@ for (irun = 0; irun < zobs.length; ++irun)
 }
 
 var imesh = 0;
-var afsim = new Array((tmesh-1)*dtmesh)
-var Htfine = new Array((tmesh-1)*dtmesh)
+var afsim = new Array(tmesh*dtmesh)
+var Htfine = new Array(tmesh*dtmesh)
 var daf = 0; 
 var dhf =0;
-for (irun = 0; irun < tmesh-1; irun++)
+for (irun = 0; irun < tmesh; irun++)
 {
     afsim[imesh] = asim[irun];
     Htfine[imesh] = Hubble_t[irun] 
@@ -134,22 +134,25 @@ for (irun = 0; irun < tmesh-1; irun++)
     }   
     imesh++
 }
+afsim[imesh] = asim[tmesh]
+Htfine[imesh] = Hubble_t[tmesh]
 //
 // search the values
-var itotal = (tmesh-1)*dtmesh;
+var itotal = tmesh*dtmesh+1;
 var Hthe = new Array(zobs.length);
 var ick = 0;
+var Herror = 0.0;
 for (ichk = 0; ichk < zobs.length; ichk++) {
 
 for (imesh = 0; imesh < itotal; imesh++) {
     if (afsim[imesh] < aobs[ichk]) {    
-        if (afsim[imesh+1] < aobs[ichk]) {
+        if (afsim[imesh+1] > aobs[ichk]) {
             Hthe[ichk] = Htfine[imesh];
+            Herror = Herror + (Hthe[ichk]-Hobs[ichk])/Hthe[ichk];
         }
     }
 }
 }
-
 
 
 var lineChartData = {
@@ -173,7 +176,7 @@ var myLine4 = new Chart(document.getElementById("redshift-compare").getContext("
 
 
 
-console.log(Hthe);
+console.log(Herror);
 /** 
 text = text + it_all;
 text = text + line + irun;
