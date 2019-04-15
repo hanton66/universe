@@ -3,7 +3,6 @@
 //
 // Square-Root
 function sqrt(x) {
-    var x;
     var y;
     y = Math.sqrt(x);
     return y;
@@ -12,8 +11,6 @@ function sqrt(x) {
 //
 // Power-Function
 function power(x, z) {
-    var x;
-    var z;
     var y;
     y = Math.pow(x, z);
     return y;
@@ -22,7 +19,6 @@ function power(x, z) {
 //
 // Exp-Funktion
 function exp(x) {
-    var x;
     var y;
     y = Math.exp(x);
     return y;
@@ -31,7 +27,6 @@ function exp(x) {
 //
 // Sinus-Hyberbolicus-Function
 function sinh(x) {
-    var x;
     var y;
     y = 0.5 * (exp(x) - exp(-x));
     return y;
@@ -40,8 +35,6 @@ function sinh(x) {
 //
 // Nummeric Differential
 function diff(fofr, r) {
-    var fofr;
-    var r;
     var dr = 1e-5;
     r = r - dr;
     var fofrm = eval(fofr);
@@ -54,8 +47,6 @@ function diff(fofr, r) {
 //
 // Nummeric Second Derivation
 function diff2(fofr, r) {
-    var fofr;
-    var r;
     var dr = 1e-5;
     r = r - dr;
     var fofrm = eval(fofr);
@@ -70,8 +61,6 @@ function diff2(fofr, r) {
 //
 // Formatting Number
 function form(x, z) {
-    var x;
-    var z;
     var y;
     x = Math.round(x * power(10, z));
     y = x / power(10, z);
