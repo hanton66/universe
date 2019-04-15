@@ -81,6 +81,7 @@ function dotheUni(Hubble, Omega, tuni) {
             }
         ]
     }
+
     var myLine1 = new Chart(document.getElementById("time-expansion").getContext("2d")).Line(lineChartData);
 
 
@@ -94,6 +95,7 @@ function dotheUni(Hubble, Omega, tuni) {
         ]
 
     }
+
     var myLine2 = new Chart(document.getElementById("dist-expansion").getContext("2d")).Line(lineChartData);
 
 
@@ -107,6 +109,7 @@ function dotheUni(Hubble, Omega, tuni) {
         ]
 
     }
+
     var myLine3 = new Chart(document.getElementById("asim-expansion").getContext("2d")).Line(lineChartData);
 
 //
