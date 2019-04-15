@@ -153,6 +153,7 @@ for (imesh = 0; imesh < itotal; imesh++) {
     }
 }
 }
+Herror = form(Herror/zobs.length*100,1);
 
 
 var lineChartData = {
