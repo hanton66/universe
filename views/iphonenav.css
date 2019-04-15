@@ -83,11 +83,11 @@ body > ul > li > a {
     text-decoration: none;
     color: inherit;
 }
-    
+
 .panel {
     box-sizing: border-box;
     padding: 10px;
-    background: #c8c8c8 
+    background: #c8c8c8
 }
 
 /************************************************************************************************/
@@ -109,7 +109,7 @@ fieldset {
     margin: 0;
     border: none;
     padding: 10px 6px;
-    background:  #7388a5 repeat-x;
+    background: #7388a5 repeat-x;
 }
 
 fieldset > h1 {

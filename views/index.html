@@ -12,36 +12,36 @@
     <script src="iphonenav.js"></script>
     <script src="somemathfunc.js"> </script>
     <script src="Chart.js"> </script>
-    <script src="calcuniverse.js"> </script>   
+    <script src="calcuniverse.js"> </script>
 </head>
   <body>
     <h1 id="pageTitle">Universe Simulation</h1>
     <a id="homeButton" class="button" href="#start">Home</a>
     <a id="resetButton" class="button" onclick="location.reload(true)">Reset</a>
-	
+
 	<ul id="start" title="Universe Simulation" selected="true">
-        <li><a href="#setParams">Set Universe Parameters</a></li>	
+        <li><a href="#setParams">Set Universe Parameters</a></li>
         <HR>
-        <li><a href="#hubbledev">Show Hubble Expansion</a></li>	
+        <li><a href="#hubbledev">Show Hubble Expansion</a></li>
         <li><a href="#distdev">Show Universe Size</a></li>
         <li><a href="#scaledev">Show Scale Factor</a></li>
-        <HR> 
-        <li><a href="#compred">Compare with Experimental Data</a></li>    
-        <HR>     
-        <li><a href="#HubbleTxt">Hubbles Law</a></li>              	       
+        <HR>
+        <li><a href="#compred">Compare with Experimental Data</a></li>
+        <HR>
+        <li><a href="#HubbleTxt">Hubbles Law</a></li>
     </ul>
 
     <form id="setParams" class="dialog" action="dotheUni()">
             <fieldset>
                 <h1>Universe Parameters</h1>
                 <a class="button toolButton goButton" href="#hubbledev" onclick="dotheUni(Hubble.value,Omega.value,tuni.value);">Go!</a>
-                <input type="text" value="1 - Hubble Parameter - 100" readonly />           
+                <input type="text" value="1 - Hubble Parameter - 100" readonly />
                 <input id="Hubble" type="range" min="1" max="100" value="70" />
                 <HR>
-                <input type="text" value="1 - Baryonic Density &Omega; - 100%" readonly />           
+                <input type="text" value="1 - Baryonic Density &Omega; - 100%" readonly />
                 <input id="Omega" type="range" min="1" max="100" value="30" />
                 <HR>
-                <input type="text" value="1 - Time Range in billion years - 99" readonly />           
+                <input type="text" value="1 - Time Range in billion years - 99" readonly />
                 <input id="tuni" type="range" min="1" max="99" value="20" />
                 <HR>
 
@@ -53,35 +53,35 @@
                 Or do you live in a Universe with a lot of unknown dark energy?<br>
                 You can also set the time range of your simulation from one to 100 billion years.<br>
                 Good luck!
-                </p>		           
+                </p>
 
             </fieldset>
-        </form>	
+        </form>
 
     <div id="hubbledev" class="panel" title="Hubble Expansion">
         <canvas id="time-expansion" width="300" height="260" > </canvas>
         <p>
         The graph shows the development of the Hubble constant during time.
         Normally the Hubble Constant goes to a constant value over a long period.
-        This means, that the universe is expanding forever. 
-        </p>        
+        This means, that the universe is expanding forever.
+        </p>
         <li><a href="#distdev">Show Universe Size</a></li>
-        <li><a href="#scaledev">Show Scale Factor</a></li>         
+        <li><a href="#scaledev">Show Scale Factor</a></li>
     </div>
 
     <div id="distdev" class="panel" title="Visible Size">
-      
+
         <canvas id="dist-expansion" width="300" height="260" > </canvas>
-        
+
         <p>
-            The graph shows the Hubble Distance and therefore the development of 
-            the visible Size of the Universe in billion ly over time. 
+            The graph shows the Hubble Distance and therefore the development of
+            the visible Size of the Universe in billion ly over time.
             The velocity of the Objects rises with larger distance.
-            The space time at the edge of the universe take off with the 
+            The space time at the edge of the universe take off with the
             velocity of light, so the objects are no longer visible.
-         </p>           
-        <li><a href="#hubbledev">Show Hubble Expansion</a></li>	
-        <li><a href="#scaledev">Show Scale Factor</a></li> 
+         </p>
+        <li><a href="#hubbledev">Show Hubble Expansion</a></li>
+        <li><a href="#scaledev">Show Scale Factor</a></li>
     </div>
 
     <div id="scaledev" class="panel" title="Scaling Factor">
@@ -89,20 +89,20 @@
         <p>
             The scaling factor describes the expansion of the universe over time.
             Scaling factor equals one is the current state.
-            So you can determine the age of the uiverse where the graph crosses One. 
-        </p>         
-        <li><a href="#hubbledev">Show Hubble Expansion</a></li>	
-        <li><a href="#distdev">Show Universe Size</a></li>       
+            So you can determine the age of the uiverse where the graph crosses One.
+        </p>
+        <li><a href="#hubbledev">Show Hubble Expansion</a></li>
+        <li><a href="#distdev">Show Universe Size</a></li>
     </div>
 
     <div id="compred" class="panel" title="Experimental Dara">
             <canvas id="redshift-compare" width="300" height="260" > </canvas>
             <p>
                 Here you can compare your theoretical Data with experimental
-                mesured Red-Shift Data und Hubble-Values.  
-            </p>         
-            <li><a href="#hubbledev">Show Hubble Expansion</a></li>	
-            <li><a href="#distdev">Show Universe Size</a></li>       
+                mesured Red-Shift Data und Hubble-Values.
+            </p>
+            <li><a href="#hubbledev">Show Hubble Expansion</a></li>
+            <li><a href="#distdev">Show Universe Size</a></li>
     </div>
 
 
