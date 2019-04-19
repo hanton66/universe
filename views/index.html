@@ -25,6 +25,7 @@
         <li><a href="#hubbledev">Show Hubble Expansion</a></li>
         <li><a href="#distdev">Show Universe Size</a></li>
         <li><a href="#scaledev">Show Scale Factor</a></li>
+        <li><a href="#dscaledev">Show De-/Acceleration Phase</a></li>       
         <HR>
         <li><a href="#compred">Compare with Experimental Data</a></li>
         <HR>
@@ -35,11 +36,11 @@
             <fieldset>
                 <h1>Universe Parameters</h1>
                 <a class="button toolButton goButton" href="#hubbledev" onclick="dotheUni(Hubble.value,Omega.value,tuni.value);">Go!</a>
-                <input type="text" value="1 - Hubble Parameter - 100" readonly />
-                <input id="Hubble" type="range" min="1" max="100" value="70" />
+                <input type="text" value="1 - Hubble Parameter - 99" readonly />
+                <input id="Hubble" type="range" min="1" max="99" value="70" />
                 <HR>
                 <input type="text" value="1 - Baryonic Density &Omega; - 100%" readonly />
-                <input id="Omega" type="range" min="1" max="100" value="30" />
+                <input id="Omega" type="range" min="1" max="99" value="30" />
                 <HR>
                 <input type="text" value="1 - Time Range in billion years - 99" readonly />
                 <input id="tuni" type="range" min="1" max="99" value="20" />
@@ -48,9 +49,8 @@
                 <p>
                 You can create your own Universe by adjusting three Parameters.<br>
                 Try to calibrate the Hubble Constant. <br>
-                Are you living in a Universe with a high baryonic (mass) density?
-                Then trim the Omega-Paramter to an high value.
-                Or do you live in a Universe with a lot of unknown dark energy?<br>
+                Are you living in a Universe with a high baryonic (mass) density or 
+                a lot of unknown dark energy? Then trim the Omega-Paramter. <br>
                 You can also set the time range of your simulation from one to 100 billion years.<br>
                 Good luck!
                 </p>
@@ -95,6 +95,17 @@
         <li><a href="#distdev">Show Universe Size</a></li>
     </div>
 
+    <div id="dscaledev" class="panel" title="De-/Accelration factor">
+        <canvas id="adot-expansion" width="300" height="260" > </canvas>
+        <p>
+            The derivation of the scaling factor describes the accelerating
+            and decelerating phases of the universe.
+        </p>
+        <li><a href="#hubbledev">Show Hubble Expansion</a></li>
+        <li><a href="#distdev">Show Universe Size</a></li>
+    </div>
+
+
     <div id="compred" class="panel" title="Experimental Dara">
             <canvas id="redshift-compare" width="300" height="260" > </canvas>
             <p>
@@ -107,7 +118,7 @@
 
 
     <ul id="HubbleTxt" title="Hubbles Law">
-        <li><iframe width="320" src="https://en.m.wikipedia.org/wiki/Hubble%27s_law"></iframe></li>
+        <li><iframe  src="https://en.m.wikipedia.org/wiki/Hubble%27s_law"></iframe></li>
     </ul>
 
 

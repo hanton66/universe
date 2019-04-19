@@ -40,7 +40,7 @@ function dotheUni(Hubble, Omega, tuni) {
     );
 
     var it_all = new Array(tmesh);
-    it_all[0] = 1;
+    it_all[0] = 0;
     var t_all = new Array(tmesh);
     t_all[0] = 0;
     var asim = new Array(tmesh);
@@ -54,7 +54,7 @@ function dotheUni(Hubble, Omega, tuni) {
     var zshift = new Array(tmesh);
     zshift[0] = 0;
     var t_de = 2 / (3 * H_0 * sqrt(O_de));
-    var dt = deltat;
+    var adot = new Array(tmesh); adot[0] = 0; 
     var lblstr = '["0"';
 
     for (var irun = 1; irun <= tmesh; ++irun) {
@@ -69,8 +69,15 @@ function dotheUni(Hubble, Omega, tuni) {
 
     }
 
+    
     lblstr = lblstr + "]";
     Hubble_t[0] = Hubble_t[1] + Hubble_t[2];
+
+    var dt = t_all[1] - t_all[0];
+    for (irun = 1; irun < tmesh; irun++) {
+        adot[irun] = (asim[irun+1] - asim[irun-1])/(2*dt)*MPc/1000;
+    }
+    adot[0] = 2*adot[1]-adot[2];
 
     var lineChartData = {
         labels: eval(lblstr),
@@ -111,6 +118,21 @@ function dotheUni(Hubble, Omega, tuni) {
     }
 
     var myLine3 = new Chart(document.getElementById("asim-expansion").getContext("2d")).Line(lineChartData);
+
+    var lineChartData = {
+        labels: eval(lblstr),
+        datasets: [
+            {
+                fillColor: "rgba(255, 255, 255, 0)",
+                data: eval(adot)
+            }
+        ]
+
+    }
+
+    var myLine5 = new Chart(document.getElementById("adot-expansion").getContext("2d")).Line(lineChartData);
+
+
 
 //
 // Some experimental data - Measured redshift vs. Hubble Constant
@@ -182,7 +204,9 @@ function dotheUni(Hubble, Omega, tuni) {
     var myLine4 = new Chart(document.getElementById("redshift-compare").getContext("2d")).Line(lineChartData);
 
 
+
     console.log(Herror);
+    console.log(adot);
     /**
      text = text + it_all;
      text = text + line + irun;
