@@ -35,7 +35,7 @@
     <form id="setParams" class="dialog">
             <fieldset>
                 <h1>Universe Parameters</h1>
-                <a class="button toolButton goButton" href="#hubbledev" onclick="dotheUni(Hubble.value,Omega.value,tuni.value);">Go!</a>
+                <a class="button goButton" href="#hubbledev" onclick="dotheUni(Hubble.value,Omega.value,tuni.value);">Go!</a>
                 <input type="text" value="1 - Hubble Parameter - 99" readonly />
                 <input id="Hubble" type="range" min="1" max="99" value="70" />
                 <HR>
@@ -117,9 +117,9 @@
     </form>
 
 
-    <ul id="HubbleTxt" title="Hubbles Law">
-        <li><iframe  src="https://en.m.wikipedia.org/wiki/Hubble%27s_law"></iframe></li>
-    </ul>
+    <div id="HubbleTxt" class="panel" title="Hubbles Law">
+        <iframe height="320" width="320" src="https://en.m.wikipedia.org/wiki/Hubble%27s_law"></iframe>
+    </div>
 
 
 

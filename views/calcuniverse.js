@@ -227,11 +227,3 @@ function dotheUni(Hubble, Omega, tuni) {
      document.querySelector('output').innerHTML = text;
      */
 }
-
-function checkCalc() {
-    if (Herror== null) {
-        var restartCalc = window.open('yahoo.de', target=_self);
-        console.log(Hubble);
-    }
-    console.log(Hubble);
-}
