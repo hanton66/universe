@@ -71,13 +71,14 @@ function dotheUni(Hubble, Omega, tuni) {
 
     
     lblstr = lblstr + "]";
-    Hubble_t[0] = Hubble_t[1] + Hubble_t[2];
+    Hubble_t[0] = 2*Hubble_t[1] - Hubble_t[2];
 
     var dt = t_all[1] - t_all[0];
     for (irun = 1; irun < tmesh; irun++) {
         adot[irun] = (asim[irun+1] - asim[irun-1])/(2*dt)*MPc/1000;
     }
     adot[0] = 2*adot[1]-adot[2];
+    adot[tmesh] = 2*adot[tmesh-1] - adot[tmesh-2];
 
     var lineChartData = {
         labels: eval(lblstr),
@@ -225,4 +226,12 @@ function dotheUni(Hubble, Omega, tuni) {
 
      document.querySelector('output').innerHTML = text;
      */
+}
+
+function checkCalc() {
+    if (Herror== null) {
+        var restartCalc = window.open('yahoo.de', target=_self);
+        console.log(Hubble);
+    }
+    console.log(Hubble);
 }

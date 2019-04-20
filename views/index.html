@@ -32,7 +32,7 @@
         <li><a href="#HubbleTxt">Hubbles Law</a></li>
     </ul>
 
-    <form id="setParams" class="dialog" action="dotheUni()">
+    <form id="setParams" class="dialog">
             <fieldset>
                 <h1>Universe Parameters</h1>
                 <a class="button toolButton goButton" href="#hubbledev" onclick="dotheUni(Hubble.value,Omega.value,tuni.value);">Go!</a>
@@ -58,7 +58,7 @@
             </fieldset>
         </form>
 
-    <div id="hubbledev" class="panel" title="Hubble Expansion">
+    <form id="hubbledev" class="panel" title="Hubble Expansion" >
         <canvas id="time-expansion" width="300" height="260" > </canvas>
         <p>
         The graph shows the development of the Hubble constant during time.
@@ -67,9 +67,9 @@
         </p>
         <li><a href="#distdev">Show Universe Size</a></li>
         <li><a href="#scaledev">Show Scale Factor</a></li>
-    </div>
+    </form>
 
-    <div id="distdev" class="panel" title="Visible Size">
+    <form id="distdev" class="panel" title="Visible Size">
 
         <canvas id="dist-expansion" width="300" height="260" > </canvas>
 
@@ -82,9 +82,9 @@
          </p>
         <li><a href="#hubbledev">Show Hubble Expansion</a></li>
         <li><a href="#scaledev">Show Scale Factor</a></li>
-    </div>
+    </form>
 
-    <div id="scaledev" class="panel" title="Scaling Factor">
+    <form id="scaledev" class="panel" title="Scaling Factor">
         <canvas id="asim-expansion" width="300" height="260" > </canvas>
         <p>
             The scaling factor describes the expansion of the universe over time.
@@ -93,9 +93,9 @@
         </p>
         <li><a href="#hubbledev">Show Hubble Expansion</a></li>
         <li><a href="#distdev">Show Universe Size</a></li>
-    </div>
+    </form>
 
-    <div id="dscaledev" class="panel" title="De-/Accelration factor">
+    <form id="dscaledev" class="panel" title="De-/Accelration factor">
         <canvas id="adot-expansion" width="300" height="260" > </canvas>
         <p>
             The derivation of the scaling factor describes the accelerating
@@ -103,10 +103,10 @@
         </p>
         <li><a href="#hubbledev">Show Hubble Expansion</a></li>
         <li><a href="#distdev">Show Universe Size</a></li>
-    </div>
+    </form>
 
 
-    <div id="compred" class="panel" title="Experimental Dara">
+    <form id="compred" class="panel" title="Experimental Dara">
             <canvas id="redshift-compare" width="300" height="260" > </canvas>
             <p>
                 Here you can compare your theoretical Data with experimental
@@ -114,7 +114,7 @@
             </p>
             <li><a href="#hubbledev">Show Hubble Expansion</a></li>
             <li><a href="#distdev">Show Universe Size</a></li>
-    </div>
+    </form>
 
 
     <ul id="HubbleTxt" title="Hubbles Law">
