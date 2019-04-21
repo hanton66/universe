@@ -13,26 +13,36 @@
     <script src="somemathfunc.js"> </script>
     <script src="Chart.js"> </script>
     <script src="calcuniverse.js"> </script>
+
+    <style>
+            img {
+              background: white;
+              border: 1px solid black;
+              width: 100%; 
+              height: auto;	
+            }
+    </style>
+
+
 </head>
   <body>
     <h1 id="pageTitle">Universe Simulation</h1>
-    <a id="homeButton" class="button" href="#start">Home</a>
-    <a id="resetButton" class="button" onclick="location.reload(true)">Reset</a>
+    <a id="homeButton" class="button" onclick="location.reload(true)">Start</a>
+    <a id="viewButton" class="button" href="#menue">View</a>
+    
 
-	<ul id="start" title="Universe Simulation" selected="true">
-        <li><a href="#setParams">Set Universe Parameters</a></li>
-        <HR>
-        <li><a href="#hubbledev">Show Hubble Expansion</a></li>
-        <li><a href="#distdev">Show Universe Size</a></li>
-        <li><a href="#scaledev">Show Scale Factor</a></li>
-        <li><a href="#dscaledev">Show De-/Acceleration Phase</a></li>       
-        <HR>
-        <li><a href="#compred">Compare with Experimental Data</a></li>
-        <HR>
-        <li><a href="#HubbleTxt">Hubbles Law</a></li>
+    <ul id="start" class="panel" title="Universe Simulation" selected="true">
+        <li><img src="universe.png"></li>
+        <li>
+            <a  href="#setParams">
+              <button  type="button"> Start Calculation </button>
+            </a>
+        </li>
+
     </ul>
 
-    <form id="setParams" class="dialog">
+
+    <form id="setParams" class="dialog" title="Set Parameters" >
             <fieldset>
                 <h1>Universe Parameters</h1>
                 <a class="button goButton" href="#hubbledev" onclick="dotheUni(Hubble.value,Omega.value,tuni.value);">Go!</a>
@@ -56,9 +66,24 @@
                 </p>
 
             </fieldset>
-        </form>
+    </form>
+
+    <ul id="menue" class="panel" title="Universe Simulation" >
+            
+                <li>Results:</li>
+                <HR>
+                <li><a href="#hubbledev">Show Hubble Expansion</a></li>
+                <li><a href="#distdev">Show Universe Size</a></li>
+                <li><a href="#scaledev">Show Scale Factor</a></li>
+                <li><a href="#dscaledev">Show De-/Acceleration Phase</a></li>       
+                <HR>
+                <li>Compare with Experimental Data:</li>
+                <li><a href="#compred">Red-Shift Data vs Hubbel Values</a></li>
+        </ul>
+ 
 
     <form id="hubbledev" class="panel" title="Hubble Expansion" >
+        
         <canvas id="time-expansion" width="300" height="260" > </canvas>
         <p>
         The graph shows the development of the Hubble constant during time.
@@ -117,9 +142,9 @@
     </form>
 
 
-    <div id="HubbleTxt" class="panel" title="Hubbles Law">
-        <iframe height="320" width="320" src="https://en.m.wikipedia.org/wiki/Hubble%27s_law"></iframe>
-    </div>
+    <form id="HubbleTxt" class="panel" title="Hubbles Law">
+        <iframe src="https://en.m.wikipedia.org/wiki/Hubble%27s_law"></iframe>
+    </form>
 
 
 
