@@ -27,25 +27,22 @@
 </head>
   <body>
     <h1 id="pageTitle">Universe Simulation</h1>
-    <a id="homeButton" class="button" onclick="location.reload(true)">Start</a>
+    <a id="homeButton" class="button" onclick="location.reload(true)">New</a>
     <a id="viewButton" class="button" href="#menue">View</a>
     
 
-    <ul id="start" class="panel" title="Universe Simulation" selected="true">
-        <li><img src="universe.png"></li>
-        <li>
-            <a  href="#setParams">
-              <button  type="button"> Start Calculation </button>
-            </a>
-        </li>
+    <form id="start" class="panel" title="Universe Simulation" selected="true">
+        <img src="universe.png">
+        <p>You can create your own Universe by adjusting a few Parameters.<br></p>
+        <a href="#setParams">
+            <button  type="button"> Start Calculation </button>
+        </a>
 
-    </ul>
+    </form>
 
 
-    <form id="setParams" class="dialog" title="Set Parameters" >
-            <fieldset>
-                <h1>Universe Parameters</h1>
-                <a class="button goButton" href="#hubbledev" onclick="dotheUni(Hubble.value,Omega.value,tuni.value);">Go!</a>
+    <form id="setParams" class="panel" title="Set Parameters" >
+  
                 <input type="text" value="1 - Hubble Parameter - 99" readonly />
                 <input id="Hubble" type="range" min="1" max="99" value="70" />
                 <HR>
@@ -55,30 +52,31 @@
                 <input type="text" value="1 - Time Range in billion years - 99" readonly />
                 <input id="tuni" type="range" min="1" max="99" value="20" />
                 <HR>
-
+                
+                    <a  href="#hubbledev" onclick="dotheUni(Hubble.value,Omega.value,tuni.value);">
+                        <button>Go!</button>
+                    </a>
+                <HR>
                 <p>
-                You can create your own Universe by adjusting three Parameters.<br>
-                Try to calibrate the Hubble Constant. <br>
-                Are you living in a Universe with a high baryonic (mass) density or 
-                a lot of unknown dark energy? Then trim the Omega-Paramter. <br>
-                You can also set the time range of your simulation from one to 100 billion years.<br>
-                Good luck!
+                1. Calibrate the Hubble Constant. <br>
+                2. Trim the Relative Baryonic mass density <br>
+                3. Set the time range in billion years.<br>
                 </p>
 
-            </fieldset>
+
     </form>
 
     <ul id="menue" class="panel" title="Universe Simulation" >
             
-                <li>Results:</li>
+                <p>Results:</p>
                 <HR>
                 <li><a href="#hubbledev">Show Hubble Expansion</a></li>
                 <li><a href="#distdev">Show Universe Size</a></li>
                 <li><a href="#scaledev">Show Scale Factor</a></li>
                 <li><a href="#dscaledev">Show De-/Acceleration Phase</a></li>       
                 <HR>
-                <li>Compare with Experimental Data:</li>
-                <li><a href="#compred">Red-Shift Data vs Hubbel Values</a></li>
+                <p>Compare with Experimental Data:</p>
+                <li><a href="#compred">Red-Shift Data vs Hubble Values</a></li>
         </ul>
  
 
@@ -91,7 +89,6 @@
         This means, that the universe is expanding forever.
         </p>
         <li><a href="#distdev">Show Universe Size</a></li>
-        <li><a href="#scaledev">Show Scale Factor</a></li>
     </form>
 
     <form id="distdev" class="panel" title="Visible Size">
@@ -105,7 +102,6 @@
             The space time at the edge of the universe take off with the
             velocity of light, so the objects are no longer visible.
          </p>
-        <li><a href="#hubbledev">Show Hubble Expansion</a></li>
         <li><a href="#scaledev">Show Scale Factor</a></li>
     </form>
 
@@ -116,8 +112,7 @@
             Scaling factor equals one is the current state.
             So you can determine the age of the uiverse where the graph crosses One.
         </p>
-        <li><a href="#hubbledev">Show Hubble Expansion</a></li>
-        <li><a href="#distdev">Show Universe Size</a></li>
+        <li><a href="#dscaledev">Show De-/Acceleration factor</a></li>
     </form>
 
     <form id="dscaledev" class="panel" title="De-/Accelration factor">
@@ -126,8 +121,7 @@
             The derivation of the scaling factor describes the accelerating
             and decelerating phases of the universe.
         </p>
-        <li><a href="#hubbledev">Show Hubble Expansion</a></li>
-        <li><a href="#distdev">Show Universe Size</a></li>
+        <li><a href="#compred">Compare with Red-Shift Data</a></li>
     </form>
 
 
@@ -138,16 +132,12 @@
                 mesured Red-Shift Data und Hubble-Values.
             </p>
             <li><a href="#hubbledev">Show Hubble Expansion</a></li>
-            <li><a href="#distdev">Show Universe Size</a></li>
     </form>
 
 
     <form id="HubbleTxt" class="panel" title="Hubbles Law">
         <iframe src="https://en.m.wikipedia.org/wiki/Hubble%27s_law"></iframe>
     </form>
-
-
-
 
 
 </body>
