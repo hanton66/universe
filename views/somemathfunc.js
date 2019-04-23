@@ -34,28 +34,56 @@ function sinh(x) {
 
 //
 // Nummeric Differential
-function diff(fofr, r) {
-    var dr = 1e-5;
-    r = r - dr;
-    var fofrm = eval(fofr);
-    r = r + dr + dr;
-    var fofrp = eval(fofr);
-    dfdr = 0.5 * (fofrp - fofrm) / dr;
+function diff(fofr, r, ngo, cmulti) {
+    var dfdr = new Array(ngo);
+    var dr = 0;
+    for (igo = 1; igo < ngo; igo++) {
+        dr = r[igo+1] - r[igo-1];
+        dfdr[igo] = (fofr[igo+1] - fofr[igo-1])/dr*cmulti;
+    }
+    dfdr[0] = 2*dfdr[1]-dfdr[2];
+    dfdr[ngo] = 2*dfdr[ngo-1]-dfdr[ngo-2];
     return dfdr;
 }
 
 //
 // Nummeric Second Derivation
-function diff2(fofr, r) {
-    var dr = 1e-5;
-    r = r - dr;
-    var fofrm = eval(fofr);
-    r = r + dr;
-    var fofr0 = eval(fofr);
-    r = r + dr;
-    var fofrp = eval(fofr);
-    dfdr = (fofrp + fofrm - 2 * fofr0) / (dr * dr);
-    return dfdr;
+function diff2(fofr, r, ngo, cmulti) {
+    var d2fdr2 = new Array(ngo);
+    var dfdr = new Array(ngo);    
+    dfdr = diff(fofr, r, ngo, cmulti);
+    d2fdr2 = diff(dfdr, r, ngo, cmulti);
+    return d2fdr2;
+}
+
+function chkCross(fofr,r,ngo,refval) {
+    var rcross = 0.0;
+    var dr = 0.0;
+    var dall = 0.0;
+    var dfofr = 0.0;
+    for (igo = 0; igo < ngo; igo++) {
+        if (fofr[igo] < refval) {
+            if (fofr[igo+1] > refval) {
+                var dr = r[igo+1] - r[igo]; 
+                var dall = fofr[igo+1] - fofr[igo];
+                var dfofr = refval - fofr[igo]; 
+                rcross = r[igo] + dr*dfofr/dall;
+            }
+        }
+        if (fofr[igo] > refval) {
+            if (fofr[igo+1] < refval) {
+                var dr = r[igo+1] - r[igo]; 
+                var dall = fofr[igo+1] - fofr[igo];
+                var dfofr = refval - fofr[igo]; 
+                rcross = r[igo] + dr*dfofr/dall;
+            }
+        }     
+        if (fofr[igo] == refval) {
+            rcross = r[igo];
+        }   
+    }
+    return rcross;
+
 }
 
 //
