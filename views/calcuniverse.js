@@ -34,10 +34,10 @@ function dotheUni(Hubble, Omega, tuni) {
     var text = line
 
 
-    alert("Hubble is set to " + Hubble + "\n" +
-        "Mass density is set to " + O_m + "\n" +
-        "Simulation time is set to " + tuni + " billion years" + "\n"
-    );
+//    alert("Hubble is set to " + Hubble + "\n" +
+//        "Mass density is set to " + O_m + "\n" +
+//        "Simulation time is set to " + tuni + " billion years" + "\n"
+//    );
 
     var it_all = new Array(tmesh);
     it_all[0] = 0;
@@ -218,12 +218,15 @@ function dotheUni(Hubble, Omega, tuni) {
 
 
 //
-//
+//  Some indivdual results as text...
     var wrtline = document.createTextNode("The Univserse has an age of " + unialt +" billion years.");
     var element = document.getElementById('unialter').appendChild(wrtline);
 
+    var wrtline = document.createTextNode("This happened after " + unislow +" billion years.");
+    var element = document.getElementById('unislower').appendChild(wrtline);
 
-
+    var wrtline = document.createTextNode("The error is about " + Herror +" %.");
+    var element = document.getElementById('huberror').appendChild(wrtline);
 
     console.log(Herror);
     console.log(unialt);   
