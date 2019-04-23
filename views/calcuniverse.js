@@ -55,6 +55,7 @@ function dotheUni(Hubble, Omega, tuni) {
     zshift[0] = 0;
     var t_de = 2 / (3 * H_0 * sqrt(O_de));
     var adot = new Array(tmesh); adot[0] = 0; 
+    var adot2 = new Array(tmesh); adot2[0] = 0;     
     var lblstr = '["0"';
 
     for (var irun = 1; irun <= tmesh; ++irun) {
@@ -73,12 +74,16 @@ function dotheUni(Hubble, Omega, tuni) {
     lblstr = lblstr + "]";
     Hubble_t[0] = 2*Hubble_t[1] - Hubble_t[2];
 
-    var dt = t_all[1] - t_all[0];
-    for (irun = 1; irun < tmesh; irun++) {
-        adot[irun] = (asim[irun+1] - asim[irun-1])/(2*dt)*MPc/1000;
-    }
-    adot[0] = 2*adot[1]-adot[2];
-    adot[tmesh] = 2*adot[tmesh-1] - adot[tmesh-2];
+    adot = diff(asim,t_all,tmesh,MPc/1000);
+    adot2 = diff2(asim,t_all,tmesh,MPc/1000);
+
+//
+// determine some values
+    var unialt = chkCross(asim,it_all,tmesh,1);
+    var unislow = chkCross(adot2,it_all,tmesh,0);
+    unialt = form(unialt,2);
+    unislow = form(unislow,2);
+
 
     var lineChartData = {
         labels: eval(lblstr),
@@ -89,7 +94,6 @@ function dotheUni(Hubble, Omega, tuni) {
             }
         ]
     }
-
     var myLine1 = new Chart(document.getElementById("time-expansion").getContext("2d")).Line(lineChartData);
 
 
@@ -103,7 +107,6 @@ function dotheUni(Hubble, Omega, tuni) {
         ]
 
     }
-
     var myLine2 = new Chart(document.getElementById("dist-expansion").getContext("2d")).Line(lineChartData);
 
 
@@ -117,7 +120,6 @@ function dotheUni(Hubble, Omega, tuni) {
         ]
 
     }
-
     var myLine3 = new Chart(document.getElementById("asim-expansion").getContext("2d")).Line(lineChartData);
 
     var lineChartData = {
@@ -128,11 +130,21 @@ function dotheUni(Hubble, Omega, tuni) {
                 data: eval(adot)
             }
         ]
-
     }
 
     var myLine5 = new Chart(document.getElementById("adot-expansion").getContext("2d")).Line(lineChartData);
 
+    var lineChartData = {
+        labels: eval(lblstr),
+        datasets: [
+            {
+                fillColor: "rgba(255, 255, 255, 0)",
+                data: eval(adot2)
+            }
+        ]
+    }
+
+    var myLine6 = new Chart(document.getElementById("adot2-expansion").getContext("2d")).Line(lineChartData);
 
 
 //
@@ -205,9 +217,17 @@ function dotheUni(Hubble, Omega, tuni) {
     var myLine4 = new Chart(document.getElementById("redshift-compare").getContext("2d")).Line(lineChartData);
 
 
+//
+//
+    var wrtline = document.createTextNode("The Univserse has an age of " + unialt +" billion years.");
+    var element = document.getElementById('unialter').appendChild(wrtline);
+
+
+
 
     console.log(Herror);
-    console.log(adot);
+    console.log(unialt);   
+    console.log(unislow);
     /**
      text = text + it_all;
      text = text + line + irun;
