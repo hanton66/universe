@@ -41,27 +41,31 @@
     </form>
 
 
-    <form id="setParams" class="panel" title="Set Parameters" >
-  
-                <input type="text" value="1 - Hubble Parameter - 99" readonly />
+    <form id="setParams" class="panel" title="Set Parameters" 
+         oninput="HubbleV.value='Hubble Parameter: ' + Hubble.value + ' km/s/MPc';
+                  OmegaV.value='Baryonic Density &Omega;: ' + Omega.value + '%'; 
+                  tuniV.value='Time Range: ' + tuni.value + ' billion years'" >
+
+                <p>
+                    1. Calibrate the Hubble Constant. <br>
+                    2. Trim the Relative Baryonic mass density <br>
+                    3. Set the time range in billion years.<br>
+                </p>
+                <HR> 
+                <input id="HubbleV" type="text" value="Hubble Parameter: 70 km/s/MPc" readonly />
                 <input id="Hubble" type="range" min="1" max="99" value="70" />
                 <HR>
-                <input type="text" value="1 - Baryonic Density &Omega; - 100%" readonly />
+                <input id="OmegaV" type="text" value="Baryonic Density &Omega;: 30%" readonly />
                 <input id="Omega" type="range" min="1" max="99" value="30" />
                 <HR>
-                <input type="text" value="1 - Time Range in billion years - 99" readonly />
+                <input id="tuniV" type="text" value="Time Range: 20 billion years" readonly />
                 <input id="tuni" type="range" min="1" max="99" value="20" />
-                <HR>
-                
+                <HR>  
                     <a  href="#hubbledev" onclick="dotheUni(Hubble.value,Omega.value,tuni.value);">
-                        <button>Go!</button>
+                        <button>Start the simulation with the Parameters above.</button>
                     </a>
                 <HR>
-                <p>
-                1. Calibrate the Hubble Constant. <br>
-                2. Trim the Relative Baryonic mass density <br>
-                3. Set the time range in billion years.<br>
-                </p>
+
 
 
     </form>
@@ -111,21 +115,32 @@
             The scaling factor describes the expansion of the universe over time.
             Scaling factor equals one is the current state.
             So you can determine the age of the uiverse where the graph crosses One.
+            <div id="unialter"></div>
         </p>
         <li><a href="#dscaledev">Show De-/Acceleration factor</a></li>
     </form>
 
-    <form id="dscaledev" class="panel" title="De-/Accelration factor">
+    <form id="dscaledev" class="panel" title="De-/Acceleration factor">
         <canvas id="adot-expansion" width="300" height="260" > </canvas>
         <p>
             The derivation of the scaling factor describes the accelerating
+            and decelerating phases of the universe.
+        </p>
+        <li><a href="#d2scaledev">Compare with Red-Shift Data</a></li>
+    </form>
+
+
+    <form id="d2scaledev" class="panel" title="Expansion-Phase">
+        <canvas id="adot2-expansion" width="300" height="260" > </canvas>
+        <p>
+            The 2nd derivation of the scaling factor describes the accelerating
             and decelerating phases of the universe.
         </p>
         <li><a href="#compred">Compare with Red-Shift Data</a></li>
     </form>
 
 
-    <form id="compred" class="panel" title="Experimental Dara">
+    <form id="compred" class="panel" title="Experimental Data">
             <canvas id="redshift-compare" width="300" height="260" > </canvas>
             <p>
                 Here you can compare your theoretical Data with experimental
